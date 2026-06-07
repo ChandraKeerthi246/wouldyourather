@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Result</title>
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 850px;
+            background: #1e293b;
+            border: 2px solid #22d3ee;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 25px #22d3ee;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .box {
+            background: #334155;
+            border-radius: 18px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .label {
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .value {
+            font-size: 28px;
+            color: #22d3ee;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            font-size: 19px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            background: #22d3ee;
+            color: #0f172a;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1 th:text="${title}"></h1>
+
+    <div class="box">
+        <div class="label">Threat Assessment</div>
+        <div class="value" th:text="${threat}"></div>
+    </div>
+
+    <div class="box">
+        <div class="label">Danger Level</div>
+        <div class="value" th:text="${danger}"></div>
+    </div>
+
+    <div class="box">
+        <div class="value" th:text="${probability}"></div>
+    </div>
+
+    <div class="box">
+        <h2>You chose:</h2>
+        <ul>
+            <li th:each="item : ${chosen}" th:text="'✓ ' + ${item}"></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Side Effects</h2>
+        <ul>
+            <li th:each="effect : ${sideEffects}" th:text="'• ' + ${effect}"></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Official Status</h2>
+        <p th:text="${status}"></p>
+    </div>
+
+    <a href="/">Play Again</a>
+
+</div>
+</body>
+</html>
