@@ -45,16 +45,26 @@
         }
     </style>
 </head>
+
 <body>
 <div class="container">
     <h1>Would You Rather?</h1>
     <p>Enter your nickname to begin.</p>
 
-    <form action="/start" method="post">
-        <input type="text" name="nickname" placeholder="ChaosQueen42" required>
+    <form action="/start" method="post" onsubmit="identifyDynatraceUser(); return true;">
+        <input type="text" id ="nickname"name="nickname" placeholder="ChaosQueen42" required>
         <br>
         <button type="submit">Start Adventure</button>
     </form>
 </div>
+<script>
+    function identifyDynatraceUser() {
+        const nickname = document.getElementById("nickname").value;
+
+        if (window.dtrum && nickname) {
+            dtrum.identifyUser(nickname);
+        }
+    }
+</script>
 </body>
 </html>
